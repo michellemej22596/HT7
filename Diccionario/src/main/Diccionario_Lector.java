@@ -1,6 +1,8 @@
 package main;
 import java.io.*;
 
+import model.AssociationEnglishToFrench;
+import model.AssociationEnglishToSpanish;
 import model.BinaryTree;
 //Codigo para leer archivo de texto obtenido de https://chuidiang.org/index.php?title=Lectura_y_Escritura_de_Ficheros_en_Java#:~:text=Podemos%20abrir%20un%20fichero%20de,y%20extraer%20campos%20de%20ella.
 
@@ -31,11 +33,21 @@ public class Diccionario_Lector {
 	            System.out.println(parts[0]);
 	            System.out.println(parts[1]);
 	            System.out.println(parts[2]);
-	            bt.add("Hola");
+	            
+	            AssociationEnglishToSpanish  AssociationSpanish = new AssociationEnglishToSpanish ();
+	            AssociationEnglishToFrench  AssociationFrench = new AssociationEnglishToFrench ();
+
+	            AssociationSpanish.setEnglishWord(parts[0]);
+	            AssociationSpanish.setSpanishMeaning(parts[1]);
+	            bt.add(AssociationSpanish);
 	            
 	         
 	         }
+	         
+	         bt.traverseInOrder(bt.getRoot());
+	         
 	     }
+	    
 	     
 	      catch(Exception e){
 	    	  
@@ -55,6 +67,8 @@ public class Diccionario_Lector {
 	      }
 		
 
+	     bt.traverseInOrder(bt.getRoot());
+	     
 	}
 
 }

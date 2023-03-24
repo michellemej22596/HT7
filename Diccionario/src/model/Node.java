@@ -1,11 +1,11 @@
 package model;
 
 public class Node {
-	 String value;
+		AssociationEnglishToSpanish  value;
 	    Node left;
 	    Node right;
 
-	    Node(String value) {
+	    Node(AssociationEnglishToSpanish  value) {
 	        this.value = value;
 	        right = null;
 	        left = null;
