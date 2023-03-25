@@ -25,19 +25,19 @@ public class BinaryTree {
 	    setRoot(addRecursive(getRoot(), value));
 	}
 	
-	private boolean containsNodeRecursive(Node current, AssociationEnglishToSpanish  value) {
+	private boolean containsNodeRecursive(Node current, String  value) {
 	    if (current == null) {
 	        return false;
 	    } 
-	    if (value == current.value) {
+	    if (value.equals(value)) {
 	        return true;
 	    } 
-	    return value.getEnglishWord().compareToIgnoreCase(current.value.getEnglishWord())< 0
+	    return value.compareToIgnoreCase(current.value.getEnglishWord())< 0
 	      ? containsNodeRecursive(current.left, value)
 	      : containsNodeRecursive(current.right, value);
 	}
 	
-	public boolean containsNode(AssociationEnglishToSpanish  value) {
+	public boolean containsNode(String  value) {
 	    return containsNodeRecursive(getRoot(), value);
 	}
 	
@@ -45,8 +45,9 @@ public class BinaryTree {
 	public void traverseInOrder(Node node) {
 	    if (node != null) {
 	        traverseInOrder(node.left);
-	        System.out.print(" " + node.value.getEnglishWord());
+	        System.out.print(node.value.getEnglishWord()+":");
 	        System.out.print(" " + node.value.getSpanishMeaning());
+	        System.out.print(", ");
 	        traverseInOrder(node.right);
 	    }
 	}

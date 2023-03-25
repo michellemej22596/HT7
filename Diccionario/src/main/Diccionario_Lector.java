@@ -1,7 +1,5 @@
 package main;
 import java.io.*;
-
-import model.AssociationEnglishToFrench;
 import model.AssociationEnglishToSpanish;
 import model.BinaryTree;
 //Codigo para leer archivo de texto obtenido de https://chuidiang.org/index.php?title=Lectura_y_Escritura_de_Ficheros_en_Java#:~:text=Podemos%20abrir%20un%20fichero%20de,y%20extraer%20campos%20de%20ella.
@@ -9,8 +7,9 @@ import model.BinaryTree;
 public class Diccionario_Lector {
 
 	public static void main(String[] args) {
-		
-		 BinaryTree bt = new BinaryTree();
+			
+		 System.out.println("Bienvenido al diccionario Inglés - Español");
+		 BinaryTree bte = new BinaryTree();
 		 String msg="";
 		 File archivo = null;
 	     FileReader fr = null;
@@ -22,6 +21,7 @@ public class Diccionario_Lector {
 	         fr = new FileReader (archivo);
 	         br = new BufferedReader(fr);
 	         System.out.println("Su archivo ha sido encontrado con éxito.");
+	         System.out.println("***********************************************************************");
 	         System.out.println("Contenido encontrado: ");
 	         String linea;
 	         
@@ -30,21 +30,22 @@ public class Diccionario_Lector {
 	            msg = linea;
 	            
 	            String[] parts = msg.split(",");
-	            System.out.println(parts[0]);
-	            System.out.println(parts[1]);
-	            System.out.println(parts[2]);
 	            
 	            AssociationEnglishToSpanish  AssociationSpanish = new AssociationEnglishToSpanish ();
-	            AssociationEnglishToFrench  AssociationFrench = new AssociationEnglishToFrench ();
+	            
 
 	            AssociationSpanish.setEnglishWord(parts[0]);
 	            AssociationSpanish.setSpanishMeaning(parts[1]);
-	            bt.add(AssociationSpanish);
+	            bte.add(AssociationSpanish);
 	            
-	         
 	         }
 	         
-	         bt.traverseInOrder(bt.getRoot());
+			 System.out.println("***********************************************************************");
+			 System.out.println("Colección de palabras encontradas en orden alfabético según el inglés: ");
+			 bte.traverseInOrder(bte.getRoot());
+			 //Otro lector donde se encuentre el texto en inglés
+			 //Se compara si existe la palabra con contains Node
+			 //Imprime resultado en consola
 	         
 	     }
 	    
@@ -67,7 +68,7 @@ public class Diccionario_Lector {
 	      }
 		
 
-	     bt.traverseInOrder(bt.getRoot());
+	    // bte.traverseInOrder(bte.getRoot());
 	     
 	}
 
