@@ -32,7 +32,6 @@ public class Diccionario_Lector {
 	            String[] parts = msg.split(",");
 	            
 	            AssociationEnglishToSpanish  AssociationSpanish = new AssociationEnglishToSpanish ();
-	            
 
 	            AssociationSpanish.setEnglishWord(parts[0]);
 	            AssociationSpanish.setSpanishMeaning(parts[1]);
@@ -43,9 +42,11 @@ public class Diccionario_Lector {
 			 System.out.println("***********************************************************************");
 			 System.out.println("Colección de palabras encontradas en orden alfabético según el inglés: ");
 			 bte.traverseInOrder(bte.getRoot());
-			 //Otro lector donde se encuentre el texto en inglés
-			 //Se compara si existe la palabra con contains Node
-			 //Imprime resultado en consola
+			 System.out.println("");
+			 System.out.println("***********************************************************************");
+			 System.out.println("Leyendo texto a traducir...");
+			 traducirArchivoIngles(bte);
+			 
 	         
 	     }
 	    
@@ -68,9 +69,48 @@ public class Diccionario_Lector {
 	      }
 		
 
-	    // bte.traverseInOrder(bte.getRoot());
 	     
 	}
+	public static void traducirArchivoIngles(BinaryTree bt) {
+		 File archivo = null;
+	     FileReader fr = null;
+	     BufferedReader br = null;
+	     String texto="";
+
+	      try {
+	         archivo = new File ("C:\\textoIngles.txt");
+	         fr = new FileReader (archivo);
+	         br = new BufferedReader(fr);
+	         
+	         String linea;
+	         while((linea=br.readLine())!=null) {
+	            System.out.println(linea);
+	            texto = linea;
+	            String[] palabras = texto.split(" ");
+	            
+	            for (int i=0;i<palabras.length;i++) {
+	            	
+	            	if(bt.containsNode(bt.getRoot(), palabras[i])) {
+	            	
+	            	}else {
+	            		System.out.println("*" + palabras[i] + "*");
+	            	}
+	           }
+	            
+	         }
+	      }
+	      catch(Exception e){
+	         e.printStackTrace();
+	      }finally{
+	         try{                    
+	            if( null != fr ){   
+	               fr.close();     
+	            }                  
+	         }catch (Exception e2){ 
+	            e2.printStackTrace();
+	         }
+	      }
+	   }
 
 }
 

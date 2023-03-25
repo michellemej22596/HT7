@@ -25,20 +25,27 @@ public class BinaryTree {
 	    setRoot(addRecursive(getRoot(), value));
 	}
 	
-	private boolean containsNodeRecursive(Node current, String  value) {
+	public boolean containsNodeRecursive(Node current, String value) {
 	    if (current == null) {
 	        return false;
 	    } 
-	    if (value.equals(value)) {
+	    
+	    int comparisonResult = value.compareToIgnoreCase(current.value.getEnglishWord());
+	    
+	    if (comparisonResult == 0) {
+	        System.out.println(current.value.getSpanishMeaning());
 	        return true;
 	    } 
-	    return value.compareToIgnoreCase(current.value.getEnglishWord())< 0
-	      ? containsNodeRecursive(current.left, value)
-	      : containsNodeRecursive(current.right, value);
+	    
+	    if (comparisonResult < 0) {
+	        return containsNodeRecursive(current.left, value);
+	    } else {
+	        return containsNodeRecursive(current.right, value);
+	    }
 	}
 	
-	public boolean containsNode(String  value) {
-	    return containsNodeRecursive(getRoot(), value);
+	public boolean containsNode(Node root, String  value) {
+	    return containsNodeRecursive(root, value);
 	}
 	
 	

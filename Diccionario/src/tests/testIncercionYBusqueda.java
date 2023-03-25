@@ -12,13 +12,18 @@ public class testIncercionYBusqueda extends TestCase {
 	  
 		//Adding elements
 		AssociationEnglishToSpanish  AssociationSpanish = new AssociationEnglishToSpanish ();
-	    AssociationSpanish.setEnglishWord("HI");
-        AssociationSpanish.setSpanishMeaning("HOLA");
+	    AssociationSpanish.setEnglishWord("hi");
+        AssociationSpanish.setSpanishMeaning("hola");
         bt.add(AssociationSpanish);
+        
+        AssociationEnglishToSpanish  AssociationSpanish2 = new AssociationEnglishToSpanish ();
+	    AssociationSpanish2.setEnglishWord("world");
+        AssociationSpanish2.setSpanishMeaning("mundo");
+        bt.add(AssociationSpanish2);
 	    
         //Contains elements
-        assertTrue(bt.containsNode("HI"));
-	    assertTrue(bt.containsNode("hi"));
+        assertTrue(bt.containsNode(bt.getRoot(), "HI"));
+	    assertTrue(bt.containsNode(bt.getRoot(), "WORLD"));
 	    
 	}
 }
